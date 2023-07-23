@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'simplepub=mj_pkg.simplepublisher:main'
+            'simplepub=mj_pkg.simplepublisher:main',
+            'simplesub=mj_pkg.simplesubscriber:main'
         ],
     },
 )

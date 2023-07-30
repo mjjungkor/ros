@@ -1,20 +1,29 @@
 import rclpy
 from rclpy.node import Node
+from rclpy.qos import QoSProfile    #rcl(ros client library)
+from rclpy.qos import QoSHistoryPolicy, QoSReliabilityPolicy, QoSDurabilityPolicy
+from rclpy.qos import qos_profile_sensor_data   #책 111페이지 참고
 from std_msgs.msg import String
 
 class Sim_pub(Node):
     def __init__(self):
         super().__init__('simple_pub')
+        qos_profile=QoSProfile(history=QoSHistoryPolicy.KEEP_ALL,
+                               reliability=QoSReliabilityPolicy.RELIABLE,
+                               durability=QoSDurabilityPolicy.TRANSIENT_LOCAL)
         #DDS에는 string type이 없어 'from std_msgs.msg import String' 진행
-        #10은 메시지를 받을 buffer의 크기
-        self.pub=self.create_publisher(String, 'listen_message',10)        
+        #10은 메시지를 받을 buffer의 크기이며 나머지는 기본 값으로 설정
+        #self.pub=self.create_publisher(String, 'listen_message',10)      
+        self.pub=self.create_publisher(String, 'listen_message',qos_profile)   
+        #self.pub=self.create_publisher(String, 'listen_message',qos_profile_sensor_data)  
         self.create_timer(1,self.publisher)
+        self.count=0
 
     def publisher(self):
         msg=String()
-        msg.data='hello ros'
+        msg.data='hello ros'+str(self.count)
         self.pub.publish(msg)
-        
+        self.count+=1
 
 
 def main():

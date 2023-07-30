@@ -1,13 +1,19 @@
 import rclpy
 from rclpy.node import Node
+from rclpy.qos import QoSProfile    #rcl(ros client library)
+from rclpy.qos import QoSHistoryPolicy, QoSReliabilityPolicy, QoSDurabilityPolicy
 from std_msgs.msg import String
 
 class Sim_sub(Node):
     def __init__(self):
         super().__init__('simple_sub')
+        qos_profile=QoSProfile(history=QoSHistoryPolicy.KEEP_ALL,
+                               reliability=QoSReliabilityPolicy.RELIABLE,
+                               durability=QoSDurabilityPolicy.TRANSIENT_LOCAL)
         #DDS에는 string type이 없어 'from std_msgs.msg import String' 진행
         #10은 메시지를 받을 buffer의 크기
-        self.pub=self.create_subscription(String, 'listen_message', self.subcallback, 10)        
+        #self.pub=self.create_subscription(String, 'listen_message', self.subcallback, 10) 
+        self.pub=self.create_subscription(String, 'listen_message', self.subcallback, qos_profile)        
         
 
     def subcallback(self, msg):

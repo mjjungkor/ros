@@ -1,6 +1,9 @@
 from setuptools import setup
+from glob import glob
+import os
 
 package_name = 'mj_pkg'
+share_dir='share/'+package_name
 
 setup(
     name=package_name,
@@ -10,6 +13,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (share_dir+'/launch',glob(os.path.join('launch','*.launch.py')))
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -23,7 +27,12 @@ setup(
             'simplepub=mj_pkg.simplepublisher:main',
             'simplesub=mj_pkg.simplesubscriber:main',
             'simpletimepub=mj_pkg.simpletimepublisher:main',
-            'simpletimesub=mj_pkg.simpletimesubscriber:main'
+            'simpletimesub=mj_pkg.simpletimesubscriber:main',
+            'messagepub=mj_pkg.messagepublisher:main',
+            'messagesub1=mj_pkg.messagesubscriber1:main',
+            'messagesub2=mj_pkg.messagesubscriber2:main',
+            'messagetimepub=mj_pkg.simpletimepublisher:main',
+            'messagetimesub=mj_pkg.messageTimeSubscriber:main'
         ],
     },
 )

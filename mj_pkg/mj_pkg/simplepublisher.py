@@ -7,7 +7,8 @@ from std_msgs.msg import String
 
 class Sim_pub(Node):
     def __init__(self):
-        super().__init__('simple_pub')
+        # super().__init__('simple_pub')
+        super().__init__('t_pub')
         qos_profile=QoSProfile(history=QoSHistoryPolicy.KEEP_ALL,
                                reliability=QoSReliabilityPolicy.RELIABLE,
                                durability=QoSDurabilityPolicy.TRANSIENT_LOCAL)

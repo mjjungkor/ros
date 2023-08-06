@@ -32,7 +32,11 @@ setup(
             'messagesub1=mj_pkg.messagesubscriber1:main',
             'messagesub2=mj_pkg.messagesubscriber2:main',
             'messagetimepub=mj_pkg.simpletimepublisher:main',
-            'messagetimesub=mj_pkg.messageTimeSubscriber:main'
+            'messagetimesub=mj_pkg.messageTimeSubscriber:main',
+            'simplesss=mj_pkg.SimpleServiceServer:main',
+            'simplessc=mj_pkg.SimpleServiceClient:main',
+            'simplesas=mj_pkg.SimpleActionServer:main',
+            'simplesac=mj_pkg.SimpleActionClient:main'
         ],
     },
 )

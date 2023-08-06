@@ -1,0 +1,4 @@
+int32 a_number
+int32 b_number
+---
+int32 return_number

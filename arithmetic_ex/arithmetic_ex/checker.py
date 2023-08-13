@@ -6,6 +6,7 @@ from rclpy.node import Node
 from mj_interfaces.action import ArithmeticChecker
 from rclpy.action import ActionClient
 import sys
+import argparse
 
 class Checker_action_client(Node):
     def __init__(self):
@@ -40,12 +41,23 @@ class Checker_action_client(Node):
         rclpy.shutdown()#완료되면 spin에서 벗어나서 강제로 종료
 
 
-def main():
+def main(argv=sys.argv[1:]):
+    parser=argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument(
+        '-g',
+        '--goal_total_sum',
+        type=int,
+        default=150,
+        help='add total sum'
+    )
+    args=parser.parse_args()
+    
     rclpy.init()
     node=Checker_action_client()
 
     try:
-        node.call_action(sys.argv[1])
+        #node.call_action(sys.argv[1])
+        node.call_action(args.goal_total_sum)
         rclpy.spin(node)
         
     except:

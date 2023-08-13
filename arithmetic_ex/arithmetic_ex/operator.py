@@ -28,8 +28,11 @@ def main():
 
     try:
         #rclpy.spin(node)
-        response=node.call_service()#1회
-        node.get_logger().info(f'Received message:{response.arithmetic_result}')
+        while rclpy.ok():#계속 rclpy작동상태확인(shutdown여부확인)
+            #rclpy.spin_once(node)#1회
+            response=node.call_service()#1회
+            node.get_logger().info(f'Received message:{response.arithmetic_result}')
+            input('Press Enter for next service call')
         #주기적으로 호출(타이머사용필요)
     except:
         node.destroy_node()

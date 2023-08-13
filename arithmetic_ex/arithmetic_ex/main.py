@@ -28,7 +28,7 @@ class Calcurator(Node):
         self.argument_symbol=['+','-','*','/']
         self.argument_operator = 1
 
-
+    #Topic
     def subcallback(self, msg):
         #print(msg.data)
         self.get_logger().info(f'Received Time : {msg.stamp.sec},{msg.stamp.nanosec}')
@@ -69,6 +69,7 @@ class Calcurator(Node):
         response.arithmetic_result=self.arithmetic_result
         return response
     
+    #Action
     def executor_callback(self,goal_handle):
         feedback=ArithmeticChecker.Feedback()
         feedback.formula=[]

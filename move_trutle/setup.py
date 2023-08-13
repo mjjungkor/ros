@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             'mt=move_trutle.moveTurtle:main',
-            'mt2=move_trutle.moveTurtle2:main'
+            'mt2=move_trutle.moveTurtle2:main',
+            'mj=move_trutle.movemjTurtle:main'
         ],
     },
 )

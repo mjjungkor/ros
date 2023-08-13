@@ -28,7 +28,8 @@ setup(
             'argument=arithmetic_ex.argument:main',
             'argumentsub=arithmetic_ex.argumentsub:main',
             'operator=arithmetic_ex.operator:main',
-            'main=arithmetic_ex.main:main'
+            'main=arithmetic_ex.main:main',
+            'checker=arithmetic_ex.checker:main'
         ],
     },
 )

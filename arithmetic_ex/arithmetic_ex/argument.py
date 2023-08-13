@@ -9,7 +9,7 @@ class Argument(Node):
         super().__init__('argument')
         self.declare_parameter('min_random_num',0) #외부로부터 사용될 변수, '0'은 default value
         self.min_random_num = self.get_parameter('min_random_num').value #클래스 내부에서 사용할 변수
-        self.declare_parameter('max_random_num',7)
+        self.declare_parameter('max_random_num',100)
         self.max_random_num = self.get_parameter('max_random_num').value
         self.add_on_set_parameters_callback(self.update_parameter) #생성될때 최초 1회가 아닌 실행중에도 들어오는 값을 처리하기 위한 서비스
         self.pub=self.create_publisher(ArithmeticArgument, 'arithmetic_argument', 10)        
@@ -44,7 +44,7 @@ def main():
     except KeyboardInterrupt:
         print('KeyboardInterrupt Error')
     finally:
-        node.destroy_node
+        node.destroy_node()
         rclpy.shutdown()
     print('This is test')
 

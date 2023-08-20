@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'move_trutle'
+package_name = 'lab'
 
 setup(
     name=package_name,
@@ -20,10 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'mt=move_trutle.moveTurtle:main',
-            'mt2=move_trutle.moveTurtle2:main',
-            'mj=move_trutle.movemjTurtle:main',
-            'imgagesub=move_trutle.imagesub:main',
+            'lab1=lab.turtleTopicPub:main',
         ],
     },
 )
